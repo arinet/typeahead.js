@@ -1,7 +1,7 @@
 /*!
  * typeahead.js 0.10.5
  * https://github.com/twitter/typeahead.js
- * Copyright 2013-2014 Twitter, Inc. and other contributors; Licensed MIT
+ * Copyright 2013-2015 Twitter, Inc. and other contributors; Licensed MIT
  */
 
 (function($) {
@@ -1447,7 +1447,7 @@
         "use strict";
         var attrsKey = "ttAttrs";
         function Typeahead(o) {
-            var $menu, $input, $hint;
+            var $menu, $input, $hint, _$links;
             o = o || {};
             if (!o.input) {
                 $.error("missing input");
@@ -1472,6 +1472,8 @@
                     });
                 }
             });
+            _$links = $menu.find("a.tt-close");
+            _$links.on("click", _(this.close).bind(this));
             $menu.on("mousedown.tt", function($e) {
                 $e.preventDefault();
             });
