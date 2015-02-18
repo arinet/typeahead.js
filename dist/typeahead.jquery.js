@@ -849,7 +849,7 @@
         "use strict";
         var attrsKey = "ttAttrs";
         function Typeahead(o) {
-            var $menu, $input, $hint, _$links;
+            var $menu, $input, $hint, $close;
             o = o || {};
             if (!o.input) {
                 $.error("missing input");
@@ -874,8 +874,8 @@
                     });
                 }
             });
-            _$links = $menu.find("a.tt-close");
-            _$links.on("click", _(this.close).bind(this));
+            $close = $menu.find(".tt-close");
+            $close.on("click", _.bind(this.close, this));
             $menu.on("mousedown.tt", function($e) {
                 $e.preventDefault();
             });

@@ -14,7 +14,7 @@ var Typeahead = (function() {
 
   // THOUGHT: what if datasets could dynamically be added/removed?
   function Typeahead(o) {
-    var $menu, $input, $hint, _$links;
+    var $menu, $input, $hint, $close;
 
     o = o || {};
 
@@ -52,8 +52,8 @@ var Typeahead = (function() {
     });
 
     // Close typeahead on any links with .tt-close
-    _$close = $menu.find('.tt-close');
-    _$close.on('click', _(this.close).bind(this));
+    $close = $menu.find('.tt-close');
+    $close.on('click', _.bind(this.close, this));
 
     // #351: prevents input blur due to clicks within dropdown menu
     $menu.on('mousedown.tt', function($e) { $e.preventDefault(); });
